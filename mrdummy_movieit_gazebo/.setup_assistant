@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: description
+    relative_path: urdf/bot.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/mrdummy.srdf
+  CONFIG:
+    author_name: deepak
+    author_email: bamaniadeepak2010@gmail.com
+    generated_timestamp: 1660304941

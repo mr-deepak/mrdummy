@@ -1,0 +1,11 @@
+controller_list:
+  - name: mrdummy_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: True
+    joints:
+      - shoulder_joint1
+      - arm1_joint
+      - arm2_joint
+      - wirst1_joint
+      - wirst2_joint

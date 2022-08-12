@@ -1,0 +1,274 @@
+<?xml version="1.0" ?>
+
+<robot name="mrdummy">
+
+
+<!-- ============================================== -->
+<!-- |        Robot Joint Controll plugin         | -->
+<!-- ============================================== -->
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/</robotNamespace>
+        </plugin>
+    </gazebo>
+
+
+
+<!-- ============================================== -->
+<!-- |             Mrdummy Base Joint             | -->
+<!-- ============================================== -->
+
+	<link name="world" />
+
+
+ 	<link name="base_frame">
+        	<visual>
+        	    <origin rpy="0 0 0" xyz="0 0 0" />
+        	    <geometry>
+        	    	<mesh filename="package://description/meshes/base.stl"/>
+            	    </geometry>
+        	</visual>
+        	<collision>
+            	    <origin rpy="0 0 0" xyz="0 0 0" />
+            	    <geometry>
+                	<mesh filename="package://description/meshes/base.stl"/>
+            	    </geometry>
+        	</collision>
+			<inertial>
+	     		<origin rpy= "0 0 0" xyz="0 0 0"/>
+            		<mass value="17" />
+            		<inertia ixx="1.81" iyy="1.55" izz="1.54" ixy="0.0" ixz="-0.33" iyz="-0.03" />
+        	</inertial>
+        </link>	
+
+	<joint name="world_joint" type="fixed">
+    	<parent link="world" />
+    	<child link = "base_frame" />
+    	<origin xyz="0 0 0" rpy="0 0 0" />
+ 	</joint>
+	
+<!-- ============================================== -->
+<!-- |                Shoulder1                   | -->
+<!-- ============================================== -->
+
+ 	<link name="shoulder1">
+        	<visual>
+        	    <origin rpy="0 0 0" xyz="0 0 0" />
+        	    <geometry>
+        	    	<mesh filename="package://description/meshes/Shoulder1.stl"/>
+            	    </geometry>
+        	</visual>
+        	<collision>
+            	    <origin rpy="0 0 0" xyz="0 0 0" />
+            	    <geometry>
+                	<mesh filename="package://description/meshes/Shoulder1.stl"/>
+            	    </geometry>
+        	</collision>
+			<inertial>
+	     		<origin rpy= "0 0 0" xyz="0 0 0"/>
+            		<mass value="0.1" />
+            		<inertia ixx="0" iyy="0" izz="0" ixy="0" ixz="0" iyz="0" />
+        	</inertial>
+        </link>	
+
+	<joint name="shoulder_joint1" type="revolute">
+    	<parent link="base_frame" />
+    	<child link = "shoulder1" />
+    	<origin xyz="0.004 0.009 0.05" rpy="0 0 0" />
+    	<axis xyz="0 0 1" />
+	<limit effort="10.0" lower="-3.14" upper="3.14" velocity="8.72665" />
+ 	</joint>
+	
+
+<!-- ============================================== -->
+<!-- |                    Arm1                    | -->
+<!-- ============================================== -->
+
+ 	<link name="arm1">
+        	<visual>
+        	    <origin rpy="0 0 0" xyz="0 0 0" />
+        	    <geometry>
+        	    	<mesh filename="package://description/meshes/Arm1.stl"/>
+            	    </geometry>
+        	</visual>
+        	<collision>
+            	    <origin rpy="0 0 0" xyz="0 0 0" />
+            	    <geometry>
+                	<mesh filename="package://description/meshes/Arm1.stl"/>
+            	    </geometry>
+        	</collision>
+			<inertial>
+	     		<origin rpy= "0 0 0" xyz="0 0 0"/>
+            		<mass value="0.1" />
+            		<inertia ixx="0" iyy="0" izz="0" ixy="0" ixz="0" iyz="0" />
+        	</inertial>
+        </link>	
+
+	<joint name="arm1_joint" type="revolute">
+    	<parent link="shoulder1" />
+    	<child link = "arm1" />
+    	<origin xyz="0.03 0.0097 0.0225" rpy="0 0 0" />
+    	<axis xyz="1 0 0" />
+	<limit effort="10.0" lower="-3.14" upper="3.14" velocity="8.72665" />
+ 	</joint>
+
+
+
+
+<!-- ============================================== -->
+<!-- |                    Arm2                    | -->
+<!-- ============================================== -->
+
+ 	<link name="arm2">
+        	<visual>
+        	    <origin rpy="0 0 0" xyz="0 0 0" />
+        	    <geometry>
+        	    	<mesh filename="package://description/meshes/Arm2.stl"/>
+            	    </geometry>
+        	</visual>
+        	<collision>
+            	    <origin rpy="0 0 0" xyz="0 0 0" />
+            	    <geometry>
+                	<mesh filename="package://description/meshes/Arm2.stl"/>
+            	    </geometry>
+        	</collision>
+			<inertial>
+	     		<origin rpy= "0 0 0" xyz="0 0 0"/>
+            		<mass value="0.1" />
+            		<inertia ixx="0" iyy="0" izz="0" ixy="0" ixz="0" iyz="0" />
+        	</inertial>
+        </link>	
+
+	<joint name="arm2_joint" type="revolute">
+    	<parent link="arm1" />
+    	<child link = "arm2" />
+    	<origin xyz="0.015 0 0.125" rpy="0 0 0" />
+    	<axis xyz="1 0 0" />
+	<limit effort="10.0" lower="-3.14" upper="3.14" velocity="8.72665" />
+ 	</joint>
+
+
+<!-- ============================================== -->
+<!-- |                    wrist1                  | -->
+<!-- ============================================== -->
+
+ 	<link name="wrist1">
+        	<visual>
+        	    <origin rpy="0 0 0" xyz="0 0 0" />
+        	    <geometry>
+        	    	<mesh filename="package://description/meshes/wrist1.stl"/>
+            	    </geometry>
+        	</visual>
+        	<collision>
+            	    <origin rpy="0 0 0" xyz="0 0 0" />
+            	    <geometry>
+                	<mesh filename="package://description/meshes/wrist1.stl"/>
+            	    </geometry>
+        	</collision>
+			<inertial>
+	     		<origin rpy= "0 0 0" xyz="0 0 0"/>
+            		<mass value="0.1" />
+            		<inertia ixx="0" iyy="0" izz="0" ixy="0" ixz="0" iyz="0" />
+        	</inertial>
+        </link>	
+
+	<joint name="wirst1_joint" type="revolute">
+    	<parent link="arm2" />
+    	<child link = "wrist1" />
+    	<origin xyz="0.015 0 0.125" rpy="0 0 0" />
+    	<axis xyz="1 0 0" />
+	<limit effort="10.0" lower="-3.14" upper="3.14" velocity="8.72665" />
+ 	</joint>
+
+
+
+
+<!-- ============================================== -->
+<!-- |                    wrist2                  | -->
+<!-- ============================================== -->
+
+ 	<link name="wrist2">
+        	<visual>
+        	    <origin rpy="0 0 0" xyz="0 0 0" />
+        	    <geometry>
+        	    	<mesh filename="package://description/meshes/wrist2.stl"/>
+            	    </geometry>
+        	</visual>
+        	<collision>
+            	    <origin rpy="0 0 0" xyz="0 0 0" />
+            	    <geometry>
+                	<mesh filename="package://description/meshes/wrist2.stl"/>
+            	    </geometry>
+        	</collision>
+			<inertial>
+	     		<origin rpy= "0 0 0" xyz="0 0 0"/>
+            		<mass value="0.1" />
+            		<inertia ixx="0" iyy="0" izz="0" ixy="0" ixz="0" iyz="0" />
+        	</inertial>
+        </link>	
+
+	<joint name="wirst2_joint" type="revolute">
+    	<parent link="wrist1" />
+    	<child link = "wrist2" />
+    	<origin xyz="0.0237 -0.03 0.00025" rpy="-1.5708 0 0" />
+    	<axis xyz="0 0 1" />
+	<limit effort="10.0" lower="-3.14" upper="3.14" velocity="8.72665" />
+ 	</joint>
+
+
+
+
+
+
+    <transmission name="trans_shoulder_joint1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="shoulder_joint1">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="shoulder_joint1_motor">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_arm1_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="arm1_joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="arm1_joint_motor">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_arm2_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="arm2_joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="arm2_joint_motor">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_wirst1_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="wirst1_joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="wirst1_joint_motor">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_wirst2_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="wirst2_joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="wirst2_joint_motor">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+</robot>
