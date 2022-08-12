@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>mrdummy_description</name>
+  <version>0.0.0</version>
+  <description>The mrdummy_description package</description>
+
+ 
+  <maintainer email="warman@todo.todo">warman</maintainer>
+
+
+  
+  <license>TODO</license>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>urdf</exec_depend>
+  <exec_depend>xacro</exec_depend>
+
+  <export>
+  <gazebo_ros                                                                 
+        gazebo_plugin_path="${prefix}/lib"
+        gazebo_model_path="${prefix}/find mrdummy_description/Mesh/" /> 
+
+  </export>
+</package>
